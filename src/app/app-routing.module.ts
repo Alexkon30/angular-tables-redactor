@@ -4,12 +4,38 @@ import {
   ExportDataComponent,
   ImportDataComponent,
   ModifyDataComponent,
+  HomeComponent,
+  PageNotFoundComponent,
 } from '@app/_components';
 
 const routes: Routes = [
-  { path: 'export', component: ExportDataComponent },
-  { path: 'import', component: ImportDataComponent },
-  { path: 'modify', component: ModifyDataComponent },
+  {
+    path: '',
+    component: HomeComponent,
+    children: [
+      {
+        path: 'modify',
+        component: ModifyDataComponent,
+      },
+      {
+        path: 'import',
+        component: ImportDataComponent,
+      },
+      {
+        path: 'export',
+        component: ExportDataComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'modify',
+        pathMatch: 'full'
+      },
+      {
+        path: '**',
+        component: PageNotFoundComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({

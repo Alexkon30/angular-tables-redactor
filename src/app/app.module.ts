@@ -7,6 +7,9 @@ import {
   ExportDataComponent,
   ImportDataComponent,
   ModifyDataComponent,
+  HomeComponent,
+  PageNotFoundComponent,
+  NavbarComponent
 } from '@app/_components';
 
 @NgModule({
@@ -15,6 +18,9 @@ import {
     ImportDataComponent,
     ExportDataComponent,
     ModifyDataComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    NavbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
