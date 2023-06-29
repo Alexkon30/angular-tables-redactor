@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent, NavbarComponent } from '@app/_components';
+import { TableModule } from './_modules/table/table.module';
 import {
   ExportDataComponent,
   ImportDataComponent,
   ModifyDataComponent,
-  HomeComponent,
   PageNotFoundComponent,
-  NavbarComponent
-} from '@app/_components';
+} from '@app/pages';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import {
     PageNotFoundComponent,
     NavbarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, TableModule],
   providers: [],
   bootstrap: [AppComponent],
 })

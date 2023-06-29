@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-import-data',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./import-data.component.scss']
 })
 export class ImportDataComponent {
+  jsonData = ''
 
+  resetData() {
+    this.jsonData = ''
+  }
 }

@@ -1,0 +1,8 @@
+<ng-container *ngIf="type === 'header'; else body">
+  <th app-cell [data]="''"></th>
+  <th app-cell *ngFor="let title of titles" [data]="title"></th>
+</ng-container>
+<ng-template #body>
+  <td app-cell [data]="index"></td>
+  <td app-cell *ngFor="let title of titles" [data]="rowData[title]"></td>
+</ng-template>
