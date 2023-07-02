@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 })
 export class CellComponent implements OnInit {
   @Input() data: string | number | undefined
+  @Input() disabled: boolean
 
   ngOnInit(): void {
       // console.log(this.data)

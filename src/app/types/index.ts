@@ -3,3 +3,9 @@ export interface RowData {
 }
 
 export type TableData = Array<RowData>;
+
+export interface MethodResponse {
+  ok: boolean
+  message: string
+  value?: unknown
+}

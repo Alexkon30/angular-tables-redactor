@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body" *ngIf="type === 'message'">
+  <p>{{message}}</p>
+</div>
+<div class="modal-body" #input>
+  <input type="text" [(ngModel)]="newColumnTitle">
+  <p *ngIf="showTooltip" class="text-danger">{{tooltip}}</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="addColumn()">Confirm</button>
+  <button type="button" class="btn btn-danger" (click)="activeModal.close()">Close</button>
+</div>

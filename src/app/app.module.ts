@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { AppComponent } from '@app/app.component';
 import { HomeComponent, NavbarComponent } from '@app/_components';
-import { TableModule } from './_modules/table/table.module';
+import { TableModule } from '@app/_modules';
 import {
   ExportDataComponent,
   ImportDataComponent,
   ModifyDataComponent,
   PageNotFoundComponent,
 } from '@app/pages';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import {
     NavbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, TableModule],
-  providers: [],
+  providers: [NgbActiveModal],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

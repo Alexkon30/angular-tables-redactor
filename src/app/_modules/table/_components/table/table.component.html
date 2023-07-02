@@ -2,6 +2,6 @@
   <tr app-row type="header" [titles]="headers"></tr>
 </thead>
 <tbody>
-  <tr app-row [titles]="headers" *ngFor="let rowData of tableData; index as i" [rowData]="rowData" [index]="i+1">
+  <tr app-row [titles]="headers" *ngFor="let rowData of tableData; index as i" [rowData]="rowData" [index]="i">
   </tr>
 </tbody>

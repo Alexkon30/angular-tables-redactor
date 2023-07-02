@@ -11,7 +11,7 @@ export class RowComponent implements OnInit {
   @Input() type: string = 'body'
   @Input() rowData: RowData = {}
   @Input() titles: Array<string>
-  @Input() index?: number
+  @Input() index: number
 
   ngOnInit(): void {
       // console.log(this.type, this.titles)

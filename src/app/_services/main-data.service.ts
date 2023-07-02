@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RowData, TableData } from '@app/types';
+import { MethodResponse, RowData, TableData } from '@app/types';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -29,10 +29,24 @@ export class MainDataService {
     this.mainDataSource.next(curData)
   }
 
-  addColumn(title: string) {
+  addColumn(title: string): MethodResponse {
+    let response = {
+      ok: false,
+      message: ''
+    }
+
     let curData = this.mainDataSource.getValue()
-    let newData = curData.map(r => ({...r, [title]: ''}))
-    this.mainDataSource.next(newData)
+    let keys = Object.keys(curData[0])
+
+    if (keys.indexOf(title) === -1) {
+      let newData = curData.map(r => ({...r, [title]: ''}))
+      this.mainDataSource.next(newData)
+      response.ok = true
+    } else {
+      response.message = 'This title is not unique'
+    }
+
+    return response
   }
 
   renameColumn(oldTitle: string, newTitle: string) {
