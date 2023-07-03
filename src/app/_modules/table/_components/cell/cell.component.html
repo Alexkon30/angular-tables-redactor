@@ -1,1 +1,15 @@
-{{data}}
+<div class="px-5 py-2" *ngIf="type === 'index'; else dataTemplate">{{data}}</div>
+
+<ng-template #dataTemplate>
+  <div (click)="modifyData()" class="modifiable px-5 py-2" *ngIf="mode === 'show'; else modify">{{data}}</div>
+
+  <ng-template class="d-flex" #modify>
+    <input type="text" #inputRef [value]="data" class="mb-2 form-control">
+    <div>
+      <button type="button" class="btn btn-success" (click)="confirmData(inputRef.value)">Confirm</button>
+      <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+    </div>
+  </ng-template>
+</ng-template>
+
+<ng-content></ng-content>

@@ -145,6 +145,11 @@ export class MainDataService {
       message: '',
     };
 
+    if(title.length === 0) {
+      response.message = 'Invalid length'
+      return response
+    }
+
     let curData = this.mainDataSource.getValue();
     let keys = Object.keys(curData[0]);
 
@@ -159,7 +164,12 @@ export class MainDataService {
     return response;
   }
 
-  renameColumn(oldTitle: string, newTitle: string) {
+  renameColumn(oldTitle: string, newTitle: string): MethodResponse {
+    let response = {
+      ok: false,
+      message: ''
+    }
+
     let curData = this.mainDataSource.getValue();
     let newData = curData.map((r) => {
       r[newTitle] = r[oldTitle];
@@ -167,12 +177,24 @@ export class MainDataService {
       return r;
     });
     this.mainDataSource.next(newData);
+
+    response.ok = true
+    return response
   }
 
-  updateRow(index: number, updatedRow: RowData) {
+  updateCell(index: number, title: string, value: string): MethodResponse {
+    let response = {
+      ok: false,
+      message: ''
+    }
+
     let curData = this.mainDataSource.getValue();
-    curData[index] = updatedRow;
+    curData[index][title] = value;
+
     this.mainDataSource.next(curData);
+
+    response.ok = true
+    return response
   }
 
   deleteRow(index: number) {

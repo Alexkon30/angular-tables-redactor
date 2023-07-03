@@ -27,5 +27,7 @@ export class ImportDataComponent {
 
   resetData() {
     this.tableData = '';
+    this.showTooltip = false
+    this.tooltip = ''
   }
 }

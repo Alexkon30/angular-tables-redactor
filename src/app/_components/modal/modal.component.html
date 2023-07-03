@@ -5,10 +5,10 @@
   <p>{{message}}</p>
 </div>
 <div class="modal-body" #input>
-  <input type="text" [(ngModel)]="newColumnTitle">
+  <input type="text" [(ngModel)]="newColumnTitle" class="form-control">
   <p *ngIf="showTooltip" class="text-danger">{{tooltip}}</p>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-success" (click)="addColumn()">Confirm</button>
-  <button type="button" class="btn btn-danger" (click)="activeModal.close()">Close</button>
+  <button type="button" class="btn btn-danger" (click)="activeModal.close()">Cancel</button>
 </div>

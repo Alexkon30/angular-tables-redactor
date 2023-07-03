@@ -1,9 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MainDataService } from '@app/_services';
 import { TableData } from '@app/types';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
-import { ModalComponent } from '@app/_components';
 
 @Component({
   selector: 'app-modify-data',
@@ -16,13 +14,7 @@ export class ModifyDataComponent implements OnInit, OnDestroy {
 
   constructor(
     private mainDataService: MainDataService,
-    private modalService: NgbModal
   ) {}
-
-  createNewColumn() {
-		const modalRef = this.modalService.open(ModalComponent)
-    modalRef.componentInstance.title = 'Enter title for new column'
-	}
 
   ngOnInit(): void {
     this.subscription = this.mainDataService.mainData.subscribe((data) => {
