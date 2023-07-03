@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MainDataService } from '@app/_services';
+import { MainDataService, ExportService } from '@app/_services';
 import { TableData } from '@app/types';
 import { Subscription } from 'rxjs';
 import { Clipboard } from '@angular/cdk/clipboard'
@@ -13,7 +13,7 @@ export class ExportDataComponent implements OnInit, OnDestroy {
   tableData: TableData
   subscription: Subscription
 
-  constructor(private mainDataService: MainDataService, private clipboard: Clipboard) {}
+  constructor(private mainDataService: MainDataService, private clipboard: Clipboard, private exportService: ExportService) {}
 
   ngOnInit(): void {
     this.subscription = this.mainDataService.mainData.subscribe(
@@ -21,6 +21,10 @@ export class ExportDataComponent implements OnInit, OnDestroy {
         this.tableData = data
       }
     );
+  }
+
+  saveCSV() {
+    this.exportService.exportToCsv(this.tableData, new Date().toISOString())
   }
 
   get jsonStringData() {
