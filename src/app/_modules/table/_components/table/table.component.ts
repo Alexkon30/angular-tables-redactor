@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ModalComponent } from '@app/_components';
+import { MainDataService } from '@app/_services';
 import { TableData } from '@app/types';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,11 +15,15 @@ export class TableComponent {
 
   showAddBtn = false;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private dataService: MainDataService) {}
 
   createNewColumn() {
     const modalRef = this.modalService.open(ModalComponent);
     modalRef.componentInstance.title = 'Enter title for new column';
+  }
+
+  deleteRow(index: number) {
+    this.dataService.deleteRow(index)
   }
 
   displayBtn() {

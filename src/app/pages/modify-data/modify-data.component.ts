@@ -16,6 +16,10 @@ export class ModifyDataComponent implements OnInit, OnDestroy {
     private mainDataService: MainDataService,
   ) {}
 
+  addRow() {
+    this.mainDataService.addRow()
+  }
+
   ngOnInit(): void {
     this.subscription = this.mainDataService.mainData.subscribe((data) => {
       this.tableData = data;
